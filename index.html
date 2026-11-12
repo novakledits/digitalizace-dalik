@@ -4,36 +4,40 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#307872">
 <meta name="description" content="Interaktivní průvodce umělou inteligencí a automatizací: pět modulů, 17 cvičení a kvíz.">
 <style>[hidden]{display:none!important}</style>
 <title>AI od nuly do sta</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Open+Sans:wght@400;500;600;700;800&display=swap">
 <style>
-/* Layout: jedna dlouhá stupnice 0 až 100 %. Pevná horní lišta s postupem, pět modulů pod sebou, v každém samostatná cvičení (lab). */
+/* Layout: jedna dlouhá stupnice 0 až 100 %. Tyrkysová lišta a úvodní pás ve stylu OPF SU, pod nimi pět modulů a v každém samostatná cvičení (lab). */
 :root{
-  --bg:#EDF0F5; --surface:#FFFFFF; --surface-2:#E2E7F0; --ink:#0E1626; --ink-2:#47526B; --line:#C9D1DF;
-  --accent:#2446E0; --accent-ink:#FFFFFF; --accent-soft:#DCE3FF;
-  --ok:#157A4A; --ok-soft:#D4F0E1; --bad:#B8322A; --bad-soft:#F8DAD6; --warn:#8A5A00; --warn-soft:#FBEBC4;
-  --t0:#DCE6FF; --t1:#FFE3C7; --t2:#D5F0E0; --t3:#F6D9EA; --t4:#E6DFFF; --t5:#FFF1B0;
-  --font-display:"Space Grotesk","Inter",system-ui,sans-serif;
-  --font-body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --brand:#307872; --brand-deep:#235A55;
+  --bg:#F2F5F5; --surface:#FFFFFF; --surface-2:#E3EBEA; --ink:#1B2524; --ink-2:#4A5857; --line:#CCD8D6;
+  --accent:#307872; --accent-ink:#FFFFFF; --accent-soft:#D8EBE8;
+  --ok:#2F7D3B; --ok-soft:#DFF1DC; --bad:#B8322A; --bad-soft:#F8DAD6; --warn:#8A5A00; --warn-soft:#FBEBC4;
+  --t0:#CFE8E5; --t1:#FFE1C9; --t2:#E0EBC8; --t3:#F5D7DC; --t4:#D5DEF0; --t5:#FFF0B8;
+  --font-display:"Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --font-body:"Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
   --font-mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
-    --bg:#0C111B; --surface:#151C2A; --surface-2:#1F283A; --ink:#E6EBF5; --ink-2:#9DA9C0; --line:#2B3652;
-    --accent:#8DA4FF; --accent-ink:#0C111B; --accent-soft:#222F5E;
-    --ok:#5FCB92; --ok-soft:#163A2B; --bad:#FF8B80; --bad-soft:#40201D; --warn:#F2C25B; --warn-soft:#3F3112;
-    --t0:#26346B; --t1:#5A3A18; --t2:#1B4332; --t3:#5B2644; --t4:#3D2F6B; --t5:#5A4B10; color-scheme:dark;
+    --brand:#1F524D; --brand-deep:#173F3B;
+    --bg:#0E1716; --surface:#152221; --surface-2:#1E2F2D; --ink:#E6EFEE; --ink-2:#9FB3B1; --line:#2A3F3D;
+    --accent:#5DB5AC; --accent-ink:#0E1716; --accent-soft:#1D4743;
+    --ok:#6FCB7C; --ok-soft:#173A1E; --bad:#FF8B80; --bad-soft:#40201D; --warn:#F2C25B; --warn-soft:#3F3112;
+    --t0:#1F4A46; --t1:#5A3A18; --t2:#3A4A1C; --t3:#5B2630; --t4:#24365E; --t5:#5A4B10; color-scheme:dark;
   }
 }
 :root[data-theme="dark"]{
-  --bg:#0C111B; --surface:#151C2A; --surface-2:#1F283A; --ink:#E6EBF5; --ink-2:#9DA9C0; --line:#2B3652;
-  --accent:#8DA4FF; --accent-ink:#0C111B; --accent-soft:#222F5E;
-  --ok:#5FCB92; --ok-soft:#163A2B; --bad:#FF8B80; --bad-soft:#40201D; --warn:#F2C25B; --warn-soft:#3F3112;
-  --t0:#26346B; --t1:#5A3A18; --t2:#1B4332; --t3:#5B2644; --t4:#3D2F6B; --t5:#5A4B10; color-scheme:dark;
+  --brand:#1F524D; --brand-deep:#173F3B;
+  --bg:#0E1716; --surface:#152221; --surface-2:#1E2F2D; --ink:#E6EFEE; --ink-2:#9FB3B1; --line:#2A3F3D;
+  --accent:#5DB5AC; --accent-ink:#0E1716; --accent-soft:#1D4743;
+  --ok:#6FCB7C; --ok-soft:#173A1E; --bad:#FF8B80; --bad-soft:#40201D; --warn:#F2C25B; --warn-soft:#3F3112;
+  --t0:#1F4A46; --t1:#5A3A18; --t2:#3A4A1C; --t3:#5B2630; --t4:#24365E; --t5:#5A4B10; color-scheme:dark;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:120px}
@@ -42,7 +46,7 @@ body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-siz
 h1,h2,h3{font-family:var(--font-display);line-height:1.15;margin:0;text-wrap:balance}
 p{margin:0}
 .wrap{max-width:1000px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
-body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--surface)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--brand)}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 
 /* top bar */
@@ -212,6 +216,45 @@ footer button{font:inherit;color:var(--accent);background:none;border:0;padding:
   .ev{grid-template-columns:1fr;gap:4px}
   .gauge .big{font-size:44px}
 }
+
+/* OPF SU: tyrkysová, bílá, jednoduché tvary, Open Sans */
+h1,h2,h3{letter-spacing:-.005em}
+.top{background:var(--brand);border-bottom:0;color:#fff}
+.brand{color:#fff;text-transform:uppercase;letter-spacing:.08em;font-size:14px;font-weight:700}
+.nav button{color:rgba(255,255,255,.82);text-transform:uppercase;letter-spacing:.04em;font-size:12px;font-weight:600}
+.nav button:hover{background:rgba(255,255,255,.14);color:#fff}
+.nav button .n{color:rgba(255,255,255,.65)}
+.pct{color:#fff}
+.bar{background:rgba(255,255,255,.2)}
+.bar i{background:#fff}
+.heroband{background:var(--brand);color:#fff}
+.hero{padding-block:44px 88px}
+.eyebrow{font:600 12px var(--font-body);text-transform:uppercase;letter-spacing:.14em;color:rgba(255,255,255,.75);margin-bottom:14px}
+.hero h1{color:#fff;font-weight:800}
+.hero .lead{color:rgba(255,255,255,.88)}
+.gaugewrap{margin-top:-52px;position:relative}
+.gauge{border-radius:3px;box-shadow:0 10px 30px rgba(10,40,36,.14)}
+.heroband .eyebrow,.heroband h1,.heroband .lead{animation:rise .6s ease both}
+.heroband h1{animation-delay:.05s}.heroband .lead{animation-delay:.12s}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.mhead .no{text-transform:uppercase;letter-spacing:.12em;font-weight:600;color:var(--accent)}
+.lab,.gauge,.gloss{border-radius:3px}
+.btn,.choice,input[type=text],input[type=number],select,textarea,.panel,.note,.msg,.ev,.step,.doc,.cc,.mods button,.tokout,.gen,.scn,pre.code{border-radius:2px}
+.btn,.choice,.cc,.mods button,.nav button,input,textarea,select,.step,.doc,.msg{transition:background-color .22s ease,border-color .22s ease,color .22s ease,transform .22s ease,box-shadow .22s ease,opacity .22s ease}
+.btn:hover,.choice:hover:not([disabled]),.cc:hover,.mods button:hover{transform:translateY(-1px)}
+.btn:active,.choice:active,.cc:active{transform:translateY(0)}
+.btn:hover{filter:none;background:var(--brand-deep);border-color:var(--brand-deep);color:#fff}
+.btn.ghost:hover{background:var(--accent-soft);color:var(--ink);border-color:var(--accent)}
+.btn.on:hover{background:var(--accent-soft);color:var(--ink)}
+input:focus,textarea:focus,select:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft);outline:none}
+.lab{transition:border-color .35s ease,box-shadow .35s ease}
+.lab:hover{box-shadow:0 8px 24px rgba(10,40,36,.08)}
+.lab.is-done{border-color:color-mix(in srgb,var(--ok) 50%,var(--line))}
+.lab h3{font-weight:700}
+.scale i,.bar i,.orow .track i,.meter i{transition:width .6s cubic-bezier(.22,.8,.3,1)}
+.bars i{transition:height .35s cubic-bezier(.22,.8,.3,1)}
+th,.tag,.chip-done,.qprog{letter-spacing:.07em}
+footer{border-top:1px solid var(--line)}
 </style>
 
 <header class="top">
@@ -224,9 +267,12 @@ footer button{font:inherit;color:var(--accent);background:none;border:0;padding:
 </header>
 
 <main>
-<section class="hero wrap">
+<div class="heroband"><div class="wrap hero">
+  <p class="eyebrow">Studijní pomůcka k předmětu Digitalizace firmy</p>
   <h1>AI od nuly do sta</h1>
   <p class="lead">Interaktivní průvodce umělou inteligencí a automatizací. Začneš u toho, z čeho se skládá text pro model, a skončíš u pitche, který něco prodá. U každého tématu si nejdřív něco zkusíš a pak se k tomu čte výklad.</p>
+</div></div>
+<section class="wrap gaugewrap">
   <div class="gauge">
     <div class="gauge-top">
       <div class="big" id="big">0 %</div>
@@ -576,7 +622,8 @@ footer button{font:inherit;color:var(--accent);background:none;border:0;padding:
 </main>
 
 <footer class="wrap">
-  <p>Postup je uložen jen v tomto prohlížeči. <button id="reset" type="button">Začít od nuly</button></p>
+  <p>Studentský projekt, není oficiálním webem fakulty. Barevnost se inspiruje webem OPF SU.</p>
+  <p style="margin-top:8px">Postup uložen jen v tomto prohlížeči. <button id="reset" type="button">Začít od nuly</button></p>
   <p style="margin-top:8px">Web měří anonymní návštěvnost přes Vercel Web Analytics. Bez cookies a bez osobních údajů.</p>
 </footer>
 
@@ -601,11 +648,20 @@ mods.forEach(function(m,i){
   var c=document.createElement('button');c.type='button';c.innerHTML=esc(m.dataset.title)+'<small data-mc="'+m.id+'"></small>';
   c.addEventListener('click',function(){m.scrollIntoView({behavior:rm?'auto':'smooth'})});modsBox.appendChild(c);
 });
+var shown=0,tw=null;
+function tween(p){
+  if(tw)cancelAnimationFrame(tw);
+  function put(v){var t=Math.round(v)+' %';$('#pct').textContent=t;$('#big').textContent=t}
+  if(rm||shown===p){shown=p;put(p);return}
+  var from=shown,t0=null;
+  function step(ts){if(t0===null)t0=ts;var k=Math.min(1,(ts-t0)/600),e=1-Math.pow(1-k,3);shown=from+(p-from)*e;put(shown);if(k<1)tw=requestAnimationFrame(step);else{shown=p;put(p)}}
+  tw=requestAnimationFrame(step);
+}
 function refresh(){
   var total=labs.length,n=0;
   labs.forEach(function(l){var d=!!store[l.dataset.id];l.classList.toggle('is-done',d);if(d)n++});
   var p=Math.round(n/total*100);
-  $('#pct').textContent=p+' %';$('#big').textContent=p+' %';
+  tween(p);
   $('#topbar').style.width=p+'%';$('#scalefill').style.width=p+'%';
   $('#scale').setAttribute('aria-valuenow',p);
   $('#bigsub').textContent='Splněno '+n+' z '+total+' cvičení';
