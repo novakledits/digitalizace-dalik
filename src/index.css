@@ -1,0 +1,180 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "@fontsource-variable/open-sans";
+@import "@fontsource-variable/jetbrains-mono";
+
+/* Barevnost inspirovaná webem OPF SU: tyrkysová, bílá, tmavá šeď. Dark režim podle systému. */
+:root {
+  --background: #f2f5f5;
+  --foreground: #1b2524;
+  --card: #ffffff;
+  --card-foreground: #1b2524;
+  --popover: #ffffff;
+  --popover-foreground: #1b2524;
+  --primary: #307872;
+  --primary-foreground: #ffffff;
+  --secondary: #e3ebea;
+  --secondary-foreground: #1b2524;
+  --muted: #e3ebea;
+  --muted-foreground: #4a5857;
+  --accent: #d8ebe8;
+  --accent-foreground: #1b2524;
+  --destructive: #b8322a;
+  --border: #ccd8d6;
+  --input: #ccd8d6;
+  --ring: #307872;
+  --radius: 0.25rem;
+  --brand: #307872;
+  --brand-deep: #235a55;
+  --ok: #2f7d3b;
+  --ok-soft: #dff1dc;
+  --bad: #b8322a;
+  --bad-soft: #f8dad6;
+  --warn: #8a5a00;
+  --warn-soft: #fbebc4;
+  --t0: #cfe8e5;
+  --t1: #ffe1c9;
+  --t2: #e0ebc8;
+  --t3: #f5d7dc;
+  --t4: #d5def0;
+  --t5: #fff0b8;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0e1716;
+    --foreground: #e6efee;
+    --card: #152221;
+    --card-foreground: #e6efee;
+    --popover: #152221;
+    --popover-foreground: #e6efee;
+    --primary: #5db5ac;
+    --primary-foreground: #0e1716;
+    --secondary: #1e2f2d;
+    --secondary-foreground: #e6efee;
+    --muted: #1e2f2d;
+    --muted-foreground: #9fb3b1;
+    --accent: #1d4743;
+    --accent-foreground: #e6efee;
+    --destructive: #ff8b80;
+    --border: #2a3f3d;
+    --input: #2a3f3d;
+    --ring: #5db5ac;
+    --brand: #1f524d;
+    --brand-deep: #173f3b;
+    --ok: #6fcb7c;
+    --ok-soft: #173a1e;
+    --bad: #ff8b80;
+    --bad-soft: #40201d;
+    --warn: #f2c25b;
+    --warn-soft: #3f3112;
+    --t0: #1f4a46;
+    --t1: #5a3a18;
+    --t2: #3a4a1c;
+    --t3: #5b2630;
+    --t4: #24365e;
+    --t5: #5a4b10;
+    color-scheme: dark;
+  }
+}
+
+@theme inline {
+  --font-sans: "Open Sans Variable", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-mono: "JetBrains Mono Variable", ui-monospace, Menlo, Consolas, monospace;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-brand: var(--brand);
+  --color-brand-deep: var(--brand-deep);
+  --color-ok: var(--ok);
+  --color-ok-soft: var(--ok-soft);
+  --color-bad: var(--bad);
+  --color-bad-soft: var(--bad-soft);
+  --color-warn: var(--warn);
+  --color-warn-soft: var(--warn-soft);
+  --color-t0: var(--t0);
+  --color-t1: var(--t1);
+  --color-t2: var(--t2);
+  --color-t3: var(--t3);
+  --color-t4: var(--t4);
+  --color-t5: var(--t5);
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 2px);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 130px;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    margin: 0;
+    line-height: 1.6;
+  }
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+    line-height: 1.15;
+  }
+  [hidden] {
+    display: none !important;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes shake {
+  25% {
+    transform: translateX(-4px);
+  }
+  75% {
+    transform: translateX(4px);
+  }
+}
+.rise {
+  animation: rise 0.6s ease both;
+}
+.shake {
+  animation: shake 0.25s;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
